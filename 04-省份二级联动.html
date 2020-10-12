@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+	</head>
+	<body>
+
+		<div class="city_list">
+			<select id="province_select">
+				<option value=""> ----请选择省份---- </option>
+			</select>
+			<select id="city_select">
+				<option value=""> ----请选择城市---- </option>
+			</select>
+		</div>
+
+		<script src="js/jquery.min-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var data = [{
+					province: "广东",
+					number: "10010",
+					cities: [{
+							name: "广州"
+						},
+						{
+							name: "深圳"
+						},
+						{
+							name: "珠海"
+						}
+					]
+				},
+				{
+					province: "江西",
+					number: "10011",
+					cities: [{
+							name: "九江"
+						},
+						{
+							name: "新余"
+						},
+						{
+							name: "上饶"
+						}
+					]
+				},
+				{
+					province: "浙江",
+					number: "10012",
+					cities: [{
+							name: "杭州"
+						},
+						{
+							name: "温州"
+						},
+						{
+							name: "台州"
+						}
+					]
+				}
+			]
+		</script>
+	</body>
+</html>

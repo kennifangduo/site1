@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 600px;
+			border: 1px solid black;
+			padding: 10px;
+			margin: 100px auto;
+		}
+		.top{
+			width: 600px;
+			height: 400px;
+			border: 1px solid black;
+			margin-bottom: 10px;
+			display:table-cell;
+			vertical-align:middle;
+			text-align:center;
+		}
+		.name{
+			display:inline-block;
+			font-size: 70px;
+		}
+		.bottom{
+			width: 250px;
+			margin-left: 185px;
+			display: inline-block;
+		}
+		.bottom input{
+			width: 120px;
+			height: 50px;
+			padding: 0 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">
+			<span class="name">??</span>
+		</div>
+		<div class="bottom">
+			<input type="button" class="start" value="开始点名" />
+			<input type="button" class="stop" value="停止点名" />
+		</div>
+	</div>
+	<script src="js/jquery.min-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			var arr = [
+			    {name:"杨特煌"},
+			    {name:"黄永毅"},
+			    {name:"梁广荣"},
+			    {name:"覃海红"},
+			    {name:"章宇锋"},
+			    {name:"邹永欢"},
+			    {name:"郑克钊"},
+			    {name:"郑俊吉"},
+			    {name:"莫爵迅"},
+			    {name:"姚永恒"}
+			];
+			$.fn.extend({
+				randoms:function(min,max,booleans){
+					var randomNum = null
+					if(booleans){
+						randomNum = Math.floor(Math.random()*(max-min+1)+min);
+					}else{
+						randomNum = Math.floor(Math.random()*(max-min)+min);
+					}
+					return randomNum;
+				},
+				dianmin:function(result){
+					var timer =null;
+					var fn = function(){
+						timer = setInterval(function(){
+							var rd = $(this).randoms(0,result.length,false);
+							$(".name").text(result[rd].name);
+						},100);
+						$(this).off();
+					}
+					$(".start").on("click",fn);
+					$(".stop").on("click",function(){
+						$(".start").on("click",fn);
+						clearInterval(timer);
+					})
+				}
+			});
+			$(".box").dianmin(arr)
+		})
+	</script>
+</body>
+</html>
